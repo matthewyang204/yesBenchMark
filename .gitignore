@@ -214,3 +214,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Random crap
+.DS_Store
+
+# IDE crap
+.vscode/
+.idea/
