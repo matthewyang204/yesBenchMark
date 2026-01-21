@@ -5,7 +5,7 @@ def multirun(func, n):
     y = []
 
     with ProcessPoolExecutor() as ex:
-        futures = [ex.submit(func, i) for i in range(n)]
+        futures = [ex.submit(func) for i in range(n)]
         for f in futures:
             a, b = f.result()
             x.append(a)

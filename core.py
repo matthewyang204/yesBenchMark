@@ -7,33 +7,43 @@ from yaspin.spinners import Spinners
 
 from resources import *
 
-def run_timed_bench():
+def run_timed_bench(multicore=False):
+    spinner = yaspin(Spinners.line)
     print("Running time benchmark for 30 seconds...")
     result_30sec = 0
     process = subprocess.Popen(['yes'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     end = time.time() + 30
-    with yaspin(Spinners.line):
-        while time.time() < end:
-            line = process.stdout.readline()
-            result_30sec += 1
+    if not multicore:
+        spinner.start()
+    while time.time() < end:
+        line = process.stdout.readline()
+        result_30sec += 1
+    if not multicore:
+        spinner.stop()
     process.terminate()
     print("Running time benchmark for 60 seconds...")
     result_60sec = 0
     process = subprocess.Popen(['yes'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     end = time.time() + 60
-    with yaspin(Spinners.line):
-        while time.time() < end:
-            line = process.stdout.readline()
-            result_60sec += 1
+    if not multicore:
+        spinner.start()
+    while time.time() < end:
+        line = process.stdout.readline()
+        result_60sec += 1
+    if not multicore:
+        spinner.stop()
     process.terminate()
     return result_30sec, result_60sec
 
 def multicore():
     cpucount = os.cpu_count()
-    results_30sec, results_60sec = multirun(run_timed_bench, cpucount)
+    results_30sec, results_60sec = multirun(run_timed_bench_multicore, cpucount)
     total_30sec = sum(results_30sec)
     total_60sec = sum(results_60sec)
     return results_30sec, results_60sec, total_30sec, total_60sec
+
+def run_timed_bench_multicore():
+    return run_timed_bench(multicore=True)
 
 def run_bench(mode):
     global spinner

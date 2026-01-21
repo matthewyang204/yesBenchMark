@@ -28,13 +28,16 @@ def main():
     
     if '--mode=time' in args:
         mode = "time"
+    elif '--mode=multicore' in args:
+        mode = "multicore"
     else:
         mode = "all"
 
     if mode == "all":
         run_bench("time")
-    elif mode == "time":
-        run_bench("time")
+        run_bench("multicore")
+    else:
+        run_bench(mode)
 
 if __name__ == "__main__":
     main()
