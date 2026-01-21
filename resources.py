@@ -1,4 +1,6 @@
+import platform
 from concurrent.futures import ProcessPoolExecutor
+import cowsay
 
 def multirun(func, n):
     x = []
@@ -12,6 +14,31 @@ def multirun(func, n):
             y.append(b)
 
     return x, y
+
+def dna(string="", level=0):
+    if string:
+        level = string.count("v")
+    if level == 0:
+        print("There are no Easter Eggs in this program.")
+    elif level == 1:
+        print("There really are no Easter Eggs in this program.")
+    elif level == 2:
+        print("Did I not tell you there are no Easter Eggs in this program?")
+    elif level == 3:
+        print("Go away!")
+    elif level == 4:
+        print("If I give you an easter egg, will you please go away?")
+    elif level == 5:
+        print("Alright, you win.")
+        message = "TACGATTGA\n---------\nATGCTAACT"
+        if platform.system() == "Linux":
+            cowsay.tux(message)
+        elif platform.system() == "Darwin":
+            cowsay.daemon(message)
+        else:
+            cowsay.cow(message)
+    elif level >= 6:
+        print("It's what you get if you re-populate the DNA sequence with the other half from its first half.")
 
 def get_proc_mhz():
     freqs = []

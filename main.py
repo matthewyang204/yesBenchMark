@@ -3,6 +3,7 @@ import platform
 
 from core import *
 from exceptions import *
+from resources import *
 
 args = sys.argv
 
@@ -18,7 +19,8 @@ def print_usage():
     print("Modes:")
     print("all                   Run all modes of benchmarks")
     print("time                  Run time-bound benchmark")
-    print("multicore             RUn time-bound benchmark for all cores")
+    print("multicore             Run time-bound benchmark for all cores")
+    print("freq                  Run frequency-bound benchmark")
     print("")
     print("This benchmarking program does not have Super DNA Powers.")
 
@@ -27,10 +29,19 @@ def main():
         print_usage()
         sys.exit(0)
     
+    if args[1] == "dna":
+        if len(args) <= 2:
+            dna()
+        else:
+            dna(args[2])
+        sys.exit(0)
+    
     if '--mode=time' in args:
         mode = "time"
     elif '--mode=multicore' in args:
         mode = "multicore"
+    elif '--mode=freq' in args:
+        mode = "freq"
     else:
         mode = "all"
 
@@ -39,6 +50,8 @@ def main():
         run_bench("time")
         print(f"Running multicore benchmark:")
         run_bench("multicore")
+        print(f"Running freq benchmark:")
+        run_bench("freq")
     else:
         run_bench(mode)
 

@@ -6,6 +6,7 @@ from yaspin import yaspin
 from yaspin.spinners import Spinners
 
 from resources import *
+from freq import *
 
 def run_timed_bench(multicore=False):
     spinner = yaspin(Spinners.line)
@@ -89,4 +90,14 @@ def run_bench(mode):
         avg_percore_60sec = avg_percore_60sec / 60
         print(f"Average lines per second per core (30 sec): {avg_percore_30sec}")
         print(f"Average lines per second per core (60 sec): {avg_percore_60sec}")
-        
+    
+    elif mode == "freq":
+        results_30sec, results_60sec = run_freq_bench()
+        avg_30sec = sum(results_30sec) / len(results_30sec)
+        avg_60sec = sum(results_60sec) / len(results_60sec)
+        print("Results for frequency-based benchmark:")
+        print(f"Frequencies in 30 seconds: {results_30sec}")
+        print(f"Frequencies in 60 seconds: {results_60sec}")
+        print("Averages:")
+        print(f"Average frequency (30 sec): {avg_30sec} MHz")
+        print(f"Average frequency (60 sec): {avg_60sec} MHz")
