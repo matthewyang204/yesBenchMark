@@ -19,25 +19,47 @@ def run_freq_bench(multicore=False, core=0):
     spinner = yaspin(Spinners.line)
     print("Running frequency benchmark for 30 seconds...")
     result_30sec = []
-    process = subprocess.Popen(['taskset', '-c', str(core), 'yes'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if platform.system() == "Linux":
+        process = subprocess.Popen(['taskset', '-c', str(core), 'yes'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    elif platform.system() == "Darwin":
+        process = subprocess.Popen(['yes'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     end = time.time() + 30
     if not multicore:
         spinner.start()
-    while time.time() < end:
-        time.sleep(1)
-        result_30sec.append(get_proc_mhz()[core])
+    if platform.system() == "Linux":
+        while time.time() < end:
+            time.sleep(1)
+            result_30sec.append(get_proc_mhz()[core])
+    elif platform.system() == "Darwin":
+        while time.time() < end:
+            time.sleep(1)
+            freqs = get_darwin_mhz()
+            if freqs:
+                max_freq = max(freqs)
+                result_30sec.append(max_freq)
     if not multicore:
         spinner.stop()
     process.terminate()
     print("Running frequency benchmark for 60 seconds...")
     result_60sec = []
-    process = subprocess.Popen(['taskset', '-c', str(core), 'yes'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if platform.system() == "Linux":  
+        process = subprocess.Popen(['taskset', '-c', str(core), 'yes'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    elif platform.system() == "Darwin":
+        process = subprocess.Popen(['yes'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     end = time.time() + 60
     if not multicore:
         spinner.start()
-    while time.time() < end:
-        time.sleep(1)
-        result_60sec.append(get_proc_mhz()[core])
+    if platform.system() == "Linux":
+        while time.time() < end:
+            time.sleep(1)
+            result_60sec.append(get_proc_mhz()[core])
+    elif platform.system() == "Darwin":
+        while time.time() < end:
+            time.sleep(1)
+            freqs = get_darwin_mhz()
+            if freqs:
+                max_freq = max(freqs)
+                result_60sec.append(max_freq)
     if not multicore:
         spinner.stop()
     process.terminate()
