@@ -1,4 +1,6 @@
 import platform
+import subprocess
+import re
 from concurrent.futures import ProcessPoolExecutor
 import cowsay
 
@@ -47,3 +49,30 @@ def get_proc_mhz():
             if "cpu MHz" in line:
                 freqs.append(float(line.split(":")[1].strip()))
     return freqs
+
+def get_darwin_mhz():
+    cmd = [
+        "sudo", "powermetrics",
+        "--samplers", "cpu_power",
+        "-n", "1",
+        "-i", "500",
+    ]
+
+    result = subprocess.run(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        text=True
+    )
+
+    cpu_freqs = {}
+    pattern = re.compile(r"CPU\s+(\d+)\s+frequency:\s+(\d+)\s+MHz")
+
+    for line in result.stdout.splitlines():
+        match = pattern.search(line)
+        if match:
+            cpu = int(match.group(1))
+            freq = int(match.group(2))
+            cpu_freqs[cpu] = freq
+
+    return [cpu_freqs[i] for i in sorted(cpu_freqs)]
