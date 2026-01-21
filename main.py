@@ -21,6 +21,7 @@ def print_usage():
     print("time                  Run time-bound benchmark")
     print("multicore             Run time-bound benchmark for all cores")
     print("freq                  Run frequency-bound benchmark")
+    print("multi-freq            Run multi-core version of frequency-bound benchmark")
     print("")
     print("This benchmarking program does not have Super DNA Powers.")
 
@@ -42,6 +43,8 @@ def main():
         mode = "multicore"
     elif '--mode=freq' in args:
         mode = "freq"
+    elif '--mode=multi-freq' in args:
+        mode = "multi-freq"
     else:
         mode = "all"
 
@@ -52,6 +55,8 @@ def main():
         run_bench("multicore")
         print(f"Running freq benchmark:")
         run_bench("freq")
+        print(f"Running multi-freq benchmark:")
+        run_bench("multi-freq")
     else:
         run_bench(mode)
 
