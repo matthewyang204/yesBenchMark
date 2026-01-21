@@ -10,6 +10,10 @@ args = sys.argv
 if platform.system() == "Windows" and '--allow-windows' not in args:
     raise PlatformNotSupportedError("Windows cannot possibly have coreutils installed and is not a supported configuration. Even if it does, it is under Cygwin and has way too much overhead to be accurate. Please install Linux or another UNIX-like system on your computer to continue.")
 
+def print_version():
+    print("yesbenchmark, version 1.0.0")
+    print("(C) 2026 Matthew Yang (杨佳明)")
+
 def print_usage():
     print("Usage: python main.py [options]")
     print("Options:")
@@ -29,13 +33,17 @@ def main():
     if '--help' in args or '-h' in args:
         print_usage()
         sys.exit(0)
-    
-    if args[1] == "dna":
-        if len(args) <= 2:
-            dna()
-        else:
-            dna(args[2])
+    elif '--version' in args or '-v' in args:
+        print_version()
         sys.exit(0)
+    
+    if len(args) > 1:
+        if args[1] == "dna":
+            if len(args) <= 2:
+                dna()
+            else:
+                dna(args[2])
+            sys.exit(0)
     
     if '--mode=time' in args:
         mode = "time"
