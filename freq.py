@@ -81,9 +81,9 @@ def run_freq_bench_multicore():
     coreCount = os.cpu_count()
     spinner = yaspin(Spinners.line)
     spinner.start()
-    results_30sec, results_60sec = multirun_coreArg(run_freq_bench_multicore, coreCount)
+    results_30sec, results_60sec = multirun_coreArg(freq_bench_multicore_worker, coreCount)
     spinner.stop()
     return results_30sec, results_60sec
 
-def run_freq_bench_multicore(core=0):
+def freq_bench_multicore_worker(core=0):
         return run_freq_bench(multicore=True, core=core)
