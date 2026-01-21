@@ -1,6 +1,7 @@
 import sys
 import platform
 
+from core import *
 from exceptions import *
 
 args = sys.argv
