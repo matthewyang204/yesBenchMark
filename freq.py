@@ -1,6 +1,5 @@
 import os
 import subprocess
-import sys
 import time
 
 from yaspin import yaspin
@@ -34,9 +33,13 @@ def run_freq_bench(multicore=False, core=0):
         while time.time() < end:
             time.sleep(1)
             freqs = get_darwin_mhz()
-            if freqs:
-                max_freq = max(freqs)
-                result_30sec.append(max_freq)
+            if not multicore:
+                if freqs:
+                    max_freq = max(freqs)
+                    result_30sec.append(max_freq)
+            else:
+                coreFreq = freqs[core]
+                result_30sec.append(coreFreq)
     if not multicore:
         spinner.stop()
     process.terminate()
@@ -57,10 +60,30 @@ def run_freq_bench(multicore=False, core=0):
         while time.time() < end:
             time.sleep(1)
             freqs = get_darwin_mhz()
-            if freqs:
-                max_freq = max(freqs)
-                result_60sec.append(max_freq)
+            if multicore:
+                if freqs:
+                    max_freq = max(freqs)
+                    result_60sec.append(max_freq)
+            else:
+                coreFreq = freqs[core]
+                result_60sec.append(coreFreq)
     if not multicore:
         spinner.stop()
     process.terminate()
     return result_30sec, result_60sec
+
+def run_freq_bench_multicore(n):
+    def run_freq_bench_multicore(core=0):
+        return run_freq_bench(multicore=True, core=core)
+    
+    if platform.system() == "Darwin":
+        print("This benchmark requires sudo privileges on macOS, please enter your password if prompted:")
+        os.system("sudo -v")
+    results_30sec = ()
+    results_60sec = ()
+    coreCount = os.cpu_count()
+    spinner = yaspin(Spinners.line)
+    spinner.start()
+    results_30sec, results_60sec = multirun_coreArg(run_freq_bench_multicore, coreCount)
+    spinner.stop()
+    return results_30sec, results_60sec

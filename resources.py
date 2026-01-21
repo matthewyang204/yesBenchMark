@@ -17,6 +17,19 @@ def multirun(func, n):
 
     return x, y
 
+def multirun_coreArg(func, n):
+    x = ()
+    y = ()
+
+    with ProcessPoolExecutor() as ex:
+        futures = [ex.submit(func, core=i) for i in range(n)]
+        for f in futures:
+            a, b = f.result()
+            x += (a,)
+            y += (b,)
+
+    return x, y
+
 def dna(string="", level=0):
     if string:
         level = string.count("v")
