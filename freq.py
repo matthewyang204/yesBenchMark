@@ -83,7 +83,7 @@ def run_freq_bench_multicore():
     spinner.start()
     results_30sec, results_60sec = multirun_coreArg(freq_bench_multicore_worker, coreCount)
     spinner.stop()
-    return results_30sec, results_60sec
+    return list(zip(results_30sec, results_60sec))
 
 def freq_bench_multicore_worker(core=0):
         return run_freq_bench(multicore=True, core=core)
