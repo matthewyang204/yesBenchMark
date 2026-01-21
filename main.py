@@ -23,15 +23,7 @@ def main():
         mode = "all"
 
     if mode == "all":
-        results = run_bench("time")
-        avg_30sec = results[0] / 30
-        avg_60sec = results[1] / 60
-        print("Results for time-based benchmark:")
-        print(f"Lines in 30 seconds: {results[0]}")
-        print(f"Lines in 60 seconds: {results[1]}")
-        print("Averages:")
-        print(f"Average lines per second (30 sec): {avg_30sec}")
-        print(f"Average lines per second (60 sec): {avg_60sec}")
+        run_bench("time")
 
 if __name__ == "__main__":
     main()

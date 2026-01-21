@@ -25,9 +25,19 @@ def run_timed_bench():
     process.terminate()
     return result_30sec, result_60sec
 
+def multicore():
+    pass
 
 def run_bench(mode):
     global spinner
 
     if mode == "time":
-        run_timed_bench()
+        results = run_timed_bench()
+        avg_30sec = results[0] / 30
+        avg_60sec = results[1] / 60
+        print("Results for time-based benchmark:")
+        print(f"Lines in 30 seconds: {results[0]}")
+        print(f"Lines in 60 seconds: {results[1]}")
+        print("Averages:")
+        print(f"Average lines per second (30 sec): {avg_30sec}")
+        print(f"Average lines per second (60 sec): {avg_60sec}")
