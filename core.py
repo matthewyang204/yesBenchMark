@@ -100,8 +100,6 @@ def run_bench(mode):
         min_30sec = min(results_30sec)
         min_60sec = min(results_60sec)
         print("Results for frequency-based benchmark:")
-        print(f"Frequencies in 30 seconds: {results_30sec}")
-        print(f"Frequencies in 60 seconds: {results_60sec}")
         print("Averages:")
         print(f"Average frequency (30 sec): {avg_30sec} MHz")
         print(f"Average frequency (60 sec): {avg_60sec} MHz")
