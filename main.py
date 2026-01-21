@@ -18,6 +18,7 @@ def print_usage():
     print("Modes:")
     print("all                   Run all modes of benchmarks")
     print("time                  Run time-bound benchmark")
+    print("multicore             RUn time-bound benchmark for all cores")
     print("")
     print("This benchmarking program does not have Super DNA Powers.")
 

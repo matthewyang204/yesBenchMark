@@ -16,8 +16,10 @@ def run_timed_bench(multicore=False):
     if not multicore:
         spinner.start()
     while time.time() < end:
-        line = process.stdout.readline()
-        result_30sec += 1
+        chunk = process.stdout.read(65536)
+        if not chunk:
+            break
+        result_30sec += chunk.count(b'\n')
     if not multicore:
         spinner.stop()
     process.terminate()
@@ -28,8 +30,10 @@ def run_timed_bench(multicore=False):
     if not multicore:
         spinner.start()
     while time.time() < end:
-        line = process.stdout.readline()
-        result_60sec += 1
+        chunk = process.stdout.read(65536)
+        if not chunk:
+            break
+        result_60sec += chunk.count(b'\n')
     if not multicore:
         spinner.stop()
     process.terminate()
