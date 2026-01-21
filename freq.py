@@ -72,10 +72,7 @@ def run_freq_bench(multicore=False, core=0):
     process.terminate()
     return result_30sec, result_60sec
 
-def run_freq_bench_multicore():
-    def run_freq_bench_multicore(core=0):
-        return run_freq_bench(multicore=True, core=core)
-    
+def run_freq_bench_multicore():    
     if platform.system() == "Darwin":
         print("This benchmark requires sudo privileges on macOS, please enter your password if prompted:")
         os.system("sudo -v")
@@ -87,3 +84,6 @@ def run_freq_bench_multicore():
     results_30sec, results_60sec = multirun_coreArg(run_freq_bench_multicore, coreCount)
     spinner.stop()
     return results_30sec, results_60sec
+
+def run_freq_bench_multicore(core=0):
+        return run_freq_bench(multicore=True, core=core)
