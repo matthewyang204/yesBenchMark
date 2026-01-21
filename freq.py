@@ -8,6 +8,9 @@ from yaspin.spinners import Spinners
 from resources import *
 
 def run_freq_bench(multicore=False, core=0):
+    if platform.system() == "Darwin":
+        print("This benchmark requires sudo privileges on macOS, please enter your password if prompted:")
+        os.system("sudo -v")
     spinner = yaspin(Spinners.line)
     print("Running frequency benchmark for 30 seconds...")
     result_30sec = []
