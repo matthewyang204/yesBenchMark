@@ -41,7 +41,10 @@ def run_timed_bench(multicore=False):
 
 def multicore():
     cpucount = os.cpu_count()
+    spinner = yaspin(Spinners.line)
+    spinner.start()
     results_30sec, results_60sec = multirun(run_timed_bench_multicore, cpucount)
+    spinner.stop()
     total_30sec = sum(results_30sec)
     total_60sec = sum(results_60sec)
     return results_30sec, results_60sec, total_30sec, total_60sec

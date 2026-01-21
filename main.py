@@ -35,7 +35,9 @@ def main():
         mode = "all"
 
     if mode == "all":
+        print(f"Running time benchmark:")
         run_bench("time")
+        print(f"Running multicore benchmark:")
         run_bench("multicore")
     else:
         run_bench(mode)
