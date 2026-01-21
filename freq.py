@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 import time
 
 from yaspin import yaspin
@@ -11,6 +12,10 @@ def run_freq_bench(multicore=False, core=0):
     if platform.system() == "Darwin":
         print("This benchmark requires sudo privileges on macOS, please enter your password if prompted:")
         os.system("sudo -v")
+    elif platform.system() == "Linux":
+        pass
+    else:
+        raise PlatformNotSupportedError("Frequency benchmark is only supported on Linux and macOS.")
     spinner = yaspin(Spinners.line)
     print("Running frequency benchmark for 30 seconds...")
     result_30sec = []
