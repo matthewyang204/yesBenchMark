@@ -1,6 +1,3 @@
-import os
-import sys
-import platform
 import subprocess
 import time
 
