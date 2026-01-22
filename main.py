@@ -66,6 +66,7 @@ def main():
         mode = "all"
 
     if mode == "all":
+        print("Running ALL benchmarks...")
         print("Running time benchmark:")
         run_bench("time")
         print("Running multicore benchmark:")
@@ -76,8 +77,11 @@ def main():
         run_bench("multi-freq")
         print("Running stress/utilization benchmark:")
         run_bench("stress")
+        print("Benchmarks done! Results are above.")
     else:
+        print(f"Running {mode} benchmark...")
         run_bench(mode)
+        print("Benchmark finished! Results are printed above.")
 
 if __name__ == "__main__":
     main()
