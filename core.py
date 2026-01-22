@@ -1,6 +1,7 @@
 import os
 import subprocess
 import time
+import statistics
 
 from yaspin import yaspin
 from yaspin.spinners import Spinners
@@ -8,6 +9,7 @@ from yaspin.spinners import Spinners
 from resources import *
 from freq import *
 from exceptions import *
+from stress import *
 
 def run_timed_bench(multicore=False):
     spinner = yaspin(Spinners.line)
@@ -148,3 +150,26 @@ def run_bench(mode):
         print(f"Maximum frequency (60 sec): {max_60sec} MHz")
         print(f"Minimum frequency (30 sec): {min_30sec} MHz")
         print(f"Minimum frequency (60 sec): {min_60sec} MHz")
+
+    elif mode == "stress":
+        results_30sec, results_60sec = run_stress_bench()
+        avg_30sec = sum(results_30sec) / len(results_30sec)
+        avg_60sec = sum(results_60sec) / len(results_60sec)
+        max_30sec = max(results_30sec)
+        max_60sec = max(results_60sec)
+        min_30sec = min(results_30sec)
+        min_60sec = min(results_60sec)
+        stddev_30sec = statistics.stdev(results_30sec)
+        stddev_60sec = statistics.stdev(results_60sec)
+        print("Results for stress/utilization benchmark:")
+        print("Averages:")
+        print(f"Average utilization (30 sec): {avg_30sec}%")
+        print(f"Average utilization (60 sec): {avg_60sec}%")
+        print("Your CPU reached the following maximum and minimum utilizations:")
+        print(f"Maximum utilization (30 sec): {max_30sec}")
+        print(f"Maximum utilization (60 sec): {max_60sec}")
+        print(f"Minimum utilization (30 sec): {min_30sec}")
+        print(f"Minimum utilization (60 sec): {min_60sec}")
+        print("Standard Deviations:")
+        print(f"Stability over 30 seconds (standard deviation): {stddev_30sec}")
+        print(f"Stability over 60 seconds (standard deviation): {stddev_60sec}")

@@ -1,5 +1,6 @@
 import sys
 import platform
+import cowsay
 
 from core import *
 from exceptions import *
@@ -7,8 +8,13 @@ from resources import *
 
 args = sys.argv
 
+windowsMSG = "You're quite right that this program will run correctly on Windows inside of a Cygwin/MSYS/MingW environment... Just don't expect it to be accurate, as that is a LOT of compatibility layers over the NT kernel! It's never going to be as close to bare metal as a proper UNIX system."
 if platform.system() == "Windows" and '--allow-windows' not in args:
-    raise PlatformNotSupportedError("Windows cannot possibly have coreutils installed and is not a supported configuration. Even if it does, it is under Cygwin and has way too much overhead to be accurate. Please install Linux or another UNIX-like system on your computer to continue.")
+    raise PlatformNotSupportedError("Windows cannot possibly have coreutils installed and is not a supported configuration. This tool does not have the Super NT (NoodleTech) Powers required to run on Windows. Please install Linux or another UNIX-like system on your computer to continue.")
+elif platform.system() == "Windows" and '--allow-windows' in args:
+    print("Alright, you win.")
+    cowsay.cow(windowsMSG)
+    cowsay.cow("Oh, and don't blame ME when the numbers inevitably look like soup.")
 
 def print_version():
     print("yesbenchmark, version 1.0.0")
@@ -26,6 +32,7 @@ def print_usage():
     print("multicore             Run time-bound benchmark for all cores")
     print("freq                  Run frequency-bound benchmark")
     print("multi-freq            Run multi-core version of frequency-bound benchmark")
+    print("stress                Run stress/utilization benchmark")
     print("")
     print("This benchmarking program does not have Super DNA Powers.")
 
@@ -53,18 +60,22 @@ def main():
         mode = "freq"
     elif '--mode=multi-freq' in args:
         mode = "multi-freq"
+    elif '--mode=stress' in args:
+        mode = "stress"
     else:
         mode = "all"
 
     if mode == "all":
-        print(f"Running time benchmark:")
+        print("Running time benchmark:")
         run_bench("time")
-        print(f"Running multicore benchmark:")
+        print("Running multicore benchmark:")
         run_bench("multicore")
-        print(f"Running freq benchmark:")
+        print("Running freq benchmark:")
         run_bench("freq")
-        print(f"Running multi-freq benchmark:")
+        print("Running multi-freq benchmark:")
         run_bench("multi-freq")
+        print("Running stress/utilization benchmark:")
+        run_bench("stress")
     else:
         run_bench(mode)
 
