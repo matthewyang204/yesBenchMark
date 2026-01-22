@@ -95,7 +95,11 @@ def run_bench(mode):
         print(f"Average lines per second per core (60 sec): {avg_percore_60sec}")
     
     elif mode == "freq":
-        results_30sec, results_60sec = run_freq_bench()
+        try:
+            results_30sec, results_60sec = run_freq_bench()
+        except PlatformNotSupportedError:
+            print("The frequency benchmark is only supported on Linux and macOS. Please check that you are not using an unsupported environment, especially Windows.\nSkipping benchmark...")
+            return
         avg_30sec = sum(results_30sec) / len(results_30sec)
         avg_60sec = sum(results_60sec) / len(results_60sec)
         max_30sec = max(results_30sec)
