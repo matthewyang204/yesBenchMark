@@ -7,6 +7,7 @@ from yaspin.spinners import Spinners
 
 from resources import *
 from freq import *
+from exceptions import *
 
 def run_timed_bench(multicore=False):
     spinner = yaspin(Spinners.line)
@@ -110,7 +111,11 @@ def run_bench(mode):
         print(f"Minimum frequency (60 sec): {min_60sec} MHz")
     
     elif mode == "multi-freq":
-        results = run_freq_bench_multicore()
+        try:
+            results = run_freq_bench_multicore()
+        except PlatformNotSupportedError:
+            print("The frequency benchmark is only supported on Linux and macOS. Please check that you are not using an unsupported environment, especially Windows. Skipping benchmark...")
+            return
         for i in range(os.cpu_count()):
             print(f"Core #{i+1}:")
             max_30sec = max(results[i][0])
