@@ -114,7 +114,7 @@ def run_bench(mode):
         try:
             results = run_freq_bench_multicore()
         except PlatformNotSupportedError:
-            print("The frequency benchmark is only supported on Linux and macOS. Please check that you are not using an unsupported environment, especially Windows. Skipping benchmark...")
+            print("The frequency benchmark is only supported on Linux and macOS. Please check that you are not using an unsupported environment, especially Windows.\nSkipping benchmark...")
             return
         for i in range(os.cpu_count()):
             print(f"Core #{i+1}:")
