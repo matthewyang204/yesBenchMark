@@ -3,6 +3,7 @@ import subprocess
 import re
 from concurrent.futures import ProcessPoolExecutor
 import cowsay
+import datetime
 
 def multirun(func, n):
     x = []
@@ -89,3 +90,6 @@ def get_darwin_mhz():
             cpu_freqs[cpu] = freq
 
     return [cpu_freqs[i] for i in sorted(cpu_freqs)]
+
+def format_hms(total_seconds):
+    return str(datetime.timedelta(seconds=total_seconds))
