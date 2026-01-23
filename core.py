@@ -65,7 +65,8 @@ def run_bench(mode):
         elapsedTime = format_hms(elapsedTime)
         print(f"Total time taken to compute: {elapsedTime}")
         score = computed / (seconds * suggestedK)
-        print(f"Score: {score:,} points")
+        score = round(score)
+        return score
 
     if mode == "time":
         results = run_timed_bench()
@@ -188,7 +189,9 @@ def run_bench(mode):
 
     elif mode == "compute":
         goal, computed, elapsedTime, suggestedK = run_compute_bench(level="performance")
-        processComputeResults(goal, computed, elapsedTime, suggestedK)
+        score = processComputeResults(goal, computed, elapsedTime, suggestedK)
+        print(f"Score: P{score:,}")
     elif mode == "compute-xt":
         goal, computed, elapsedTime, suggestedK = run_compute_bench(level="extreme")
-        processComputeResults(goal, computed, elapsedTime, suggestedK)
+        score = processComputeResults(goal, computed, elapsedTime, suggestedK)
+        print(f"Score: X{score:,}")
