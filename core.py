@@ -10,6 +10,7 @@ from resources import *
 from freq import *
 from exceptions import *
 from stress import *
+from core import *
 
 def run_timed_bench(multicore=False):
     spinner = yaspin(Spinners.line)
@@ -58,6 +59,13 @@ def run_timed_bench_multicore():
 
 def run_bench(mode):
     global spinner
+    def processComputeResults(goal, computed, elapsedTime, suggestedK):
+        print(f"Total processed chunks: {computed:,}")
+        seconds = elapsedTime
+        elapsedTime = format_hms(elapsedTime)
+        print(f"Total time taken to compute: {elapsedTime}")
+        score = computed / (seconds * suggestedK)
+        print(f"Score: {score:,} points")
 
     if mode == "time":
         results = run_timed_bench()
@@ -177,3 +185,10 @@ def run_bench(mode):
         print("Standard Deviations:")
         print(f"Stability over 30 seconds (standard deviation): {stddev_30sec}%")
         print(f"Stability over 60 seconds (standard deviation): {stddev_60sec}%")
+
+    elif mode == "compute":
+        goal, computed, elapsedTime, suggestedK = run_compute_bench(level="performance")
+        processComputeResults(goal, computed, elapsedTime, suggestedK)
+    elif mode == "compute-xt":
+        goal, computed, elapsedTime, suggestedK = run_compute_bench(level="extreme")
+        processComputeResults(goal, computed, elapsedTime, suggestedK)
