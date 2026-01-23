@@ -10,7 +10,7 @@ from resources import *
 from freq import *
 from exceptions import *
 from stress import *
-from core import *
+from compute import *
 
 def run_timed_bench(multicore=False):
     spinner = yaspin(Spinners.line)

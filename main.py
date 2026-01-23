@@ -33,6 +33,8 @@ def print_usage():
     print("freq                  Run frequency-bound benchmark")
     print("multi-freq            Run multi-core version of frequency-bound benchmark")
     print("stress                Run stress/utilization benchmark")
+    print("compute               Run compute benchmark (time taken depends on CPU speed)")
+    print("compute-xt            Run a more extreme version of compute benchmark")
     print("")
     print("This benchmarking program does not have Super DNA Powers.")
 
@@ -62,6 +64,10 @@ def main():
         mode = "multi-freq"
     elif '--mode=stress' in args:
         mode = "stress"
+    elif '--mode=compute' in args:
+        mode = "compute"
+    elif '--mode=compute-xt' in args:
+        mode = "compute-xt"
     else:
         mode = "all"
 
@@ -77,6 +83,9 @@ def main():
         run_bench("multi-freq")
         print("Running stress/utilization benchmark:")
         run_bench("stress")
+        print("Running compute benchmark:")
+        run_bench("compute")
+        # We skip the compute-xt benchmark because it may cause overheating and other issues on older computers
         print("Benchmarks done! Results are above.")
     else:
         print(f"Running {mode} benchmark...")
