@@ -62,7 +62,7 @@ def run_freq_bench(multicore=False, core=0):
         while time.time() < end:
             time.sleep(1)
             freqs = get_darwin_mhz()
-            if multicore:
+            if not multicore:
                 if freqs:
                     max_freq = max(freqs)
                     result_60sec.append(max_freq)
