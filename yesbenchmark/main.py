@@ -2,9 +2,9 @@ import sys
 import platform
 import cowsay
 
-from core import *
-from exceptions import *
-from resources import *
+from .core import *
+from .exceptions import *
+from .resources import *
 
 args = sys.argv
 

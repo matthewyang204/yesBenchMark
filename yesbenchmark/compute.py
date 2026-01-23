@@ -6,7 +6,7 @@ from yaspin import yaspin
 from yaspin.spinners import Spinners
 import cowsay
 
-from resources import *
+from .resources import *
 
 def spawn_processes(command, n, moo=False):
     processList = []

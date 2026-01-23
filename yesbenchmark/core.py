@@ -6,11 +6,11 @@ import statistics
 from yaspin import yaspin
 from yaspin.spinners import Spinners
 
-from resources import *
-from freq import *
-from exceptions import *
-from stress import *
-from compute import *
+from .resources import *
+from .freq import *
+from .exceptions import *
+from .stress import *
+from .compute import *
 
 def run_timed_bench(multicore=False):
     spinner = yaspin(Spinners.line)

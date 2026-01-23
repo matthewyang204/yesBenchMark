@@ -5,9 +5,9 @@ import psutil
 from yaspin import yaspin
 from yaspin.spinners import Spinners
 
-from resources import *
-from freq import *
-from exceptions import *
+from .resources import *
+from .freq import *
+from .exceptions import *
 
 def run_stress_bench():
     spinner = yaspin(Spinners.line)

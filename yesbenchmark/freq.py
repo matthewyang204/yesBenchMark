@@ -5,8 +5,8 @@ import time
 from yaspin import yaspin
 from yaspin.spinners import Spinners
 
-from resources import *
-from exceptions import *
+from .resources import *
+from .exceptions import *
 
 def run_freq_bench(multicore=False, core=0):
     if platform.system() == "Darwin":
