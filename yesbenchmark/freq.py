@@ -1,6 +1,7 @@
 import os
 import subprocess
 import time
+import platform
 
 from yaspin import yaspin
 from yaspin.spinners import Spinners
