@@ -13,6 +13,11 @@ def run_freq_bench(multicore=False, core=0):
     if platform.system() == "Darwin":
         print("This benchmark requires sudo privileges on macOS, please enter your password if prompted:")
         os.system("sudo -v")
+        PMCheck = os.system("command -v powermetrics")
+        if PMCheck != 0:
+            print("The `powermetrics` utility is not present on this system and required by the macOS version of this benchmark. Please install it to continue.")
+            print("NOTE: Perhaps your OS X version is too old.")
+            sys.exit(PMCheck)
     elif platform.system() == "Linux":
         pass
     else:
@@ -78,6 +83,11 @@ def run_freq_bench_multicore():
     if platform.system() == "Darwin":
         print("This benchmark requires sudo privileges on macOS, please enter your password if prompted:")
         os.system("sudo -v")
+        PMCheck = os.system("command -v powermetrics")
+        if PMCheck != 0:
+            print("The `powermetrics` utility is not present on this system and required by the macOS version of this benchmark. Please install it to continue.")
+            print("NOTE: Perhaps your OS X version is too old.")
+            sys.exit(PMCheck)
     results_30sec = ()
     results_60sec = ()
     coreCount = os.cpu_count()
