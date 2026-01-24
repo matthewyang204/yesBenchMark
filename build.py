@@ -25,7 +25,8 @@ def run_pyinstaller():
             'pyinstaller',
             main_script,
             '--onefile',
-            '--name', 'yesbenchmark'
+            '--name', 'yesbenchmark',
+            "--additional-hooks-dir=pyinstaller-hooks"
         ]
 
         # Run PyInstaller
