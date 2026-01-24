@@ -19,7 +19,7 @@ def install_deps(build=False):
 
 def run_pyinstaller():
     try:
-        main_script = os.path.join('yesbenchmark', 'main.py')
+        main_script = os.path.join('cli.py')
 
         cmd = [
             'pyinstaller',
