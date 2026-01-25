@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import os
+import platform
 
 version_msg = """matthewyang204's Python Build Engine for yesBenchMark, version 0.0.0
 (C) Matthew Yang 2025-2026"""
@@ -14,6 +15,8 @@ Options:
 
 def install_deps(build=False):
     os.system(f"{sys.executable} -m pip install -r requirements.txt")
+    if platform.system() != "Darwin":
+        os.system(f"{sys.executable} -m pip install -r non-darwin-requirements.txt")
     if build:
         os.system(f"{sys.executable} -m pip install -r requirements-build.txt")
 
