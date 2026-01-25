@@ -1,3 +1,2 @@
 cowsay==6.1
-psutil==7.2.1
 yaspin==3.4.0
