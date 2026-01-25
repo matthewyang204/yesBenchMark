@@ -22,3 +22,7 @@ Repository = "https://github.com/mattheyang204/yesBenchMark"
 
 [project.scripts]
 yesbenchmark = "yesbenchmark.main:main"
+
+[tool.setuptools.packages]
+find = { include = ["yesbenchmark*"] }
+
