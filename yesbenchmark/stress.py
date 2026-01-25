@@ -19,7 +19,7 @@ from .darwin_shenanigans import *
 
 def run_stress_bench():
     spinner = yaspin(Spinners.line)
-    if platform.system() == "Darwin" and psutilExist == False:
+    if platform.system() == "Darwin":
         cpuPfunc = cpu_percent_macos
     else:
         cpuPfunc = psutil.cpu_percent
