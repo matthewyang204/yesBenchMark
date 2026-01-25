@@ -40,7 +40,7 @@ def print_usage():
     print("This benchmarking program does not have Super DNA Powers.")
 
 def main():
-    yesCheck = os.system("command -v yes")
+    yesCheck = os.system("command -v yes > /dev/null")
     if yesCheck != 0:
         print("The command line utility `yes` is not installed and is required by this program. Please install it to continue.")
         sys.exit(yesCheck)
