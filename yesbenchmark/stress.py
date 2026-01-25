@@ -15,7 +15,8 @@ from yaspin.spinners import Spinners
 from .resources import *
 from .freq import *
 from .exceptions import *
-from .darwin_shenanigans import *
+if platform.system() == "Darwin":
+    from .darwin_shenanigans import *
 
 def run_stress_bench():
     spinner = yaspin(Spinners.line)
