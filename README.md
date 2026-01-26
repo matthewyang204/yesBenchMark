@@ -1,4 +1,11 @@
 # yesBenchMark
+[![PyPI version](https://img.shields.io/pypi/v/yesBenchMark?color=blue)](https://pypi.org/project/yesBenchMark/)
+[![Python versions](https://img.shields.io/pypi/pyversions/yesBenchMark)](https://pypi.org/project/yesBenchMark/)
+[![License](https://img.shields.io/github/license/matthewyang204/yesBenchMark)](https://github.com/matthewyang204/yesBenchMark/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/pypi/dm/yesBenchMark)](https://pypi.org/project/yesBenchMark/)
+<img src=https://img.shields.io/github/downloads/matthewyang204/yesBenchMark/total alt="GitHub downloads">
+
+
 yesBenchMark is a crazy tool for benchmarking the CPU in UNIX & UNIX-like systems. It abuses the `yes` command to load the CPU and measures CPU utilization, speed, and compute.
 
 <img src="https://raw.githubusercontent.com/matthewyang204/yesBenchMark/master/assets/yesbenchmark-demo.gif" width="547" alt="yesBenchMark demo (animated)">
