@@ -37,19 +37,21 @@ compute-xt            Run a more extreme version of compute benchmark
 Well that is...all the capabilities of the program. We recommend the `compute` mode for most people.
 
 Scores for reference (performance is `compute` & extreme is `compute-xt`):
+
 M1 Max with 8 P-cores & 2 E-cores (10 cores total):
-P70,363 → performance mode
-X685 → extreme mode
+- P70,363 → performance mode
+- X685 → extreme mode
 
 i7-2600 with 8 cores:
-P55,609 → performance mode
-X557 → extreme mode
+- P55,609 → performance mode
+- X557 → extreme mode
 
 G5 with 1 core:
-P572 → performance mode
-{untested} → extreme mode (would take forever on my iMac G5 and overheat it)
+- P572 → performance mode
+- {untested} → extreme mode (would take forever on my iMac G5 and overheat it)
 
 Note: Do NOT run the program with zero arguments unless you want to run ALL benchmarks except the `compute-xt` one. This will take a long time and likely overheat your computer.
+
 # Installation
 Requirements:
 - Python 3.8 or later (we don't test for older, probably works down to 3.6)
