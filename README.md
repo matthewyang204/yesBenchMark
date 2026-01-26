@@ -49,6 +49,7 @@ G5 with 1 core:
 P572 → performance mode
 {untested} → extreme mode (would take forever on my iMac G5 and overheat it)
 
+Note: Do NOT run the program with zero arguments unless you want to run ALL benchmarks except the `compute-xt` one. This will take a long time and likely overheat your computer.
 # Installation
 Requirements:
 - Python 3.8 or later (we don't test for older, probably works down to 3.6)
