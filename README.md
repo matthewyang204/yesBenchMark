@@ -34,6 +34,20 @@ stress                Run stress/utilization benchmark
 compute               Run compute benchmark (time taken depends on CPU speed)
 compute-xt            Run a more extreme version of compute benchmark
 ```
+Well that is...all the capabilities of the program. We recommend the `compute` mode for most people.
+
+Scores for reference (performance is `compute` & extreme is `compute-xt`):
+M1 Max with 8 P-cores & 2 E-cores (10 cores total):
+P70,363 → performance mode
+X685 → extreme mode
+
+i7-2600 with 8 cores:
+P55,609 → performance mode
+X557 → extreme mode
+
+G5 with 1 core:
+P572 → performance mode
+{untested} → extreme mode (would take forever on my iMac G5 and overheat it)
 
 # Installation
 Requirements:
