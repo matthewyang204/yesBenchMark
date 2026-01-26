@@ -34,3 +34,32 @@ stress                Run stress/utilization benchmark
 compute               Run compute benchmark (time taken depends on CPU speed)
 compute-xt            Run a more extreme version of compute benchmark
 ```
+
+# Installation
+Requirements:
+- Python 3.8 or later (we don't test for older, probably works down to 3.6)
+- OS X 10.5 Leopard or later (if too old to be supported by Homebrew, please use Tigerbrew to install Python 3.10) or Linux 3.2 or later (BSDs may be supported at a later time when I have time to spin up one in a virtual machine)
+
+To install yesBenchMark via pip:
+```
+pip install yesbenchmark
+```
+Or if you have cloned the repo for development (note that this will also allow you to edit the src code without re-installing for ease):
+```
+pip install -e .
+```
+
+## Compiling and installing as a binary
+Requirements:
+- The above requirements
+- If macOS, an Intel x86_64 CPU or better
+- MacOSX 10.9 or later if on Mac
+
+To compile:
+```
+python3 compile.py
+```
+After that, just copy the binary in dist out and into a directory in your PATH.
+
+# License
+This project is licensed under the GNU General Public License v3.0 (GPLv3). All past and future versions of this software are covered by this license. See the `LICENSE` file for full details.
