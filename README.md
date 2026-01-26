@@ -79,4 +79,4 @@ python3 compile.py
 After that, just copy the binary in dist out and into a directory in your PATH.
 
 # License
-This project is licensed under the GNU General Public License v3.0 (GPLv3). All past and future versions of this software are covered by this license. See the `LICENSE` file for full details.
+This project is licensed under the GNU General Public License v3.0 (GPLv3). Please note that it will also be compatible with any future versions of this license, should they be released. All past and future versions of this software are covered by this license. See the `LICENSE` file for full details.
