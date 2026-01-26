@@ -22,7 +22,7 @@ def print_version():
     print("(C) 2026 Matthew Yang (杨佳明)")
 
 def print_usage():
-    print("Usage: python main.py [options]")
+    print("Usage: yesbenchmark [options]")
     print("Options:")
     print("  --help, -h          Show this help message")
     print("  --mode=MODE         Run specific mode of benchmark")
