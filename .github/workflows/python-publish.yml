@@ -1,11 +1,9 @@
-name: Custom Release Workflow
+name: Publish to PyPI
 
 on:
-  # Automatic: when a GitHub Release is published
   release:
     types: [published]
 
-  # Manual: Run from the Actions tab
   workflow_dispatch:
 
 permissions:
