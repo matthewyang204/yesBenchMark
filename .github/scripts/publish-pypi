@@ -1,6 +1,26 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "Testing..."
+echo "Checking system info..."
 python3 --version
-python --version
+cat /etc/os-release
+echo "done"
+
+echo "Setting up environment..."
+python3 -m venv venv
+source venv/bin/activate
+echo "done"
+
+echo "Installing packages..."
+pip3 install .
+pip3 install build twine
+echo "done"
+
+echo "Building..."
+python3 -m build
+echo "done"
+
+echo "Uploading to PyPI..."
+python3 -m twine upload dist/* -u __token__ -p "$PYPI_API_TOKEN"
+
+echo "Package yesBenchMark has been successfully built and uploaded to PyPI!"
