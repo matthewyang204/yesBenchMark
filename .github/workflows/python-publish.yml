@@ -24,4 +24,4 @@ jobs:
         env:
           PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          .github/scripts/publish-pypi
+          ./.github/scripts/publish-pypi
