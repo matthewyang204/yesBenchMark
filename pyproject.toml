@@ -6,7 +6,7 @@ authors = [
 maintainers = [
     {name = "matthewyang204", email = "matthew.yang204@gmail.com"},
 ]
-version = "1.0.0"
+version = "1.0.0.post1"
 description = "The only benchmark tool on the block crazy enough to abuse the UNIX yes command to test your CPU"
 readme = "README.md"
 license = "GPL-3.0-or-later"
