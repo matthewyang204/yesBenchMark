@@ -62,6 +62,7 @@ Note: Do NOT run the program with zero arguments unless you want to run ALL benc
 Requirements:
 - Python 3.8 or later (we don't test for older, probably works down to 3.6)
 - OS X 10.5 Leopard or later (if too old to be supported by Homebrew, please use Tigerbrew to install Python 3.10) or Linux 3.2 or later (BSDs may be supported at a later time when I have time to spin up one in a virtual machine)
+    - Other UNIXes are probably going to work, so long as they are at least UNIX-like. We don't currently test for these other systems, but fixes are welcome. We might also start testing for BSD sometime.
 
 To install yesBenchMark via pip:
 ```
