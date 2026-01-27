@@ -1,0 +1,29 @@
+name: Custom Release Workflow
+
+on:
+  # Automatic: when a GitHub Release is published
+  release:
+    types: [published]
+
+  # Manual: Run from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    container:
+      image: python:3.13-trixie
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run custom shell code
+        env:
+          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          .github/scripts/publish-pypi
