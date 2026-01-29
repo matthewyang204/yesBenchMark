@@ -1,7 +1,7 @@
 # yesBenchMark
 [![PyPI version](https://img.shields.io/pypi/v/yesBenchMark?color=blue)](https://pypi.org/project/yesBenchMark/)
 [![License](https://img.shields.io/github/license/matthewyang204/yesBenchMark)](https://github.com/matthewyang204/yesBenchMark/blob/main/LICENSE)
-[![PyPI downloads](https://img.shields.io/pypi/dm/yesBenchMark)](https://pypi.org/project/yesBenchMark/)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/yesbenchmark?period=total&units=ABBREVIATION&left_color=GREY&right_color=GREEN&left_text=PyPI+downloads)](https://pepy.tech/projects/yesbenchmark)
 <img src=https://img.shields.io/github/downloads/matthewyang204/yesBenchMark/total alt="GitHub downloads">
 
 
