@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/mattheyang204/yesBenchMark"
+Repository = "https://github.com/matthewyang204/yesBenchMark"
 homepage = "https://github.com/matthewyang204/yesBenchMark"
 
 [project.scripts]
