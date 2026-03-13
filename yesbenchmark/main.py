@@ -36,6 +36,7 @@ def print_usage():
     print("stress                Run stress/utilization benchmark")
     print("compute               Run compute benchmark (time taken depends on CPU speed)")
     print("compute-xt            Run a more extreme version of compute benchmark")
+    print("Note: Running the program without any arguments makes it default to the `compute` mode.")
     print("")
     print("This benchmarking program does not have Super DNA Powers.")
 
