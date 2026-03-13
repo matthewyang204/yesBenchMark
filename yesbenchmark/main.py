@@ -15,10 +15,10 @@ if platform.system() == "Windows" and '--allow-windows' not in args:
 elif platform.system() == "Windows" and '--allow-windows' in args:
     print("Alright, you win.")
     cowsay.cow(windowsMSG)
-    cowsay.cow("Oh, and don't blame ME when the numbers inevitably look like soup.")
+    cowsay.tux("Oh, and don't blame ME when the numbers inevitably look like soup.")
 
 def print_version():
-    print("yesbenchmark, version 1.0.0")
+    print("yesbenchmark, version 1.0.1")
     print("(C) 2026 Matthew Yang (杨佳明)")
 
 def print_usage():
