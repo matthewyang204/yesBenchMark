@@ -78,7 +78,7 @@ def main():
         mode = "compute"
 
     if mode == "all":
-        print("Running ALL benchmarks...")
+        print("WARNING: Running ALL benchmarks...")
         print("Running time benchmark:")
         run_bench("time")
         print("Running multicore benchmark:")
