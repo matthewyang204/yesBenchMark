@@ -75,7 +75,7 @@ def main():
     elif '--mode=compute-xt' in args:
         mode = "compute-xt"
     else:
-        mode = "all"
+        mode = "compute"
 
     if mode == "all":
         print("Running ALL benchmarks...")
