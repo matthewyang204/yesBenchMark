@@ -45,7 +45,7 @@ Well that is...all the capabilities of the program. We recommend the `compute` m
 Scores for reference (performance is `compute` & extreme is `compute-xt`):
 
 M1 Max with 8 P-cores & 2 E-cores (10 cores total):
-- P70,363 → performance mode
+- P71,153 → performance mode
 - X685 → extreme mode
 
 i7-2600 with 8 cores:
